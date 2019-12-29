@@ -11,7 +11,7 @@ extern "C"
   extern std::uintptr_t _bss_end;
 }
 
-namespace rram
+namespace rhandler
 {
   void init_ram();
 }
@@ -24,5 +24,10 @@ void rram::init_ram()
     std::size_t(
       static_cast<const mem_aligned_t*>(static_cast<const void*>(&_data_end))
       - static_cast<const mem_aligned_t*>(static_cast<const void*>(&_data_begin)));
+
+  std::copy(static_cast<const mem_aligned_t*>(static_cast<const void*>(&_rom_data_begin)),static_cast<const mem_aligned_t*>(static_cast<const void*>(&_rom_data_begin)) + size_data_section, static_cast<mem_aligned_t*>(static_cast<void*>(&_data_begin)));
+
+  std::fill(static_cast<mem_aligned_t*>(static_cast<void*>(&_bss_begin)),static_cast<mem_aligned_t*>(static_cast<void*>(&_bss_end)),
+  static_cast<mem_aligned_t>(0U));
   
 }
