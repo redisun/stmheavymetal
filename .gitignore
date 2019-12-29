@@ -6,4 +6,14 @@
 *.o
 
 # vscode files and folders
+.vscode/
 
+# build directory
+build/
+
+# cmake stuff
+CMakeFiles/
+Makefile
+cmake_install.cmake
+CMAKE_MODULE_PATH
+CMakeCache.txt
