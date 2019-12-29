@@ -4,6 +4,7 @@ namespace rhandler
   void init_ctors();
 }
 
+extern "C" int main();
 extern "C" void __reset_handler() __attribute__((used, noinline));
 
 void __reset_handler()
@@ -21,6 +22,6 @@ void __reset_handler()
   rhandler::init_ctors();
 
   // #5 jump to main
-
+  main();
   // #6 catch unexpected return from main
 }

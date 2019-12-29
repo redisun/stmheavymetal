@@ -15,7 +15,16 @@ extern "C" void __pend_sv_handler     () __attribute__((used, noinline));
 extern "C" void __sys_tick_handler    () __attribute__((used, noinline));
 extern "C" void __unused_irq          () __attribute__((used, noinline));
 
-extern "C" void __unused_irq          () __attribute__((noreturn)){ for(;;) { ;; }}
+extern "C" void __unused_irq          () { asm volatile("nop"); }
+extern "C" void __nmi_handler         () { asm volatile("nop"); }
+extern "C" void __hard_fault_handler  () { asm volatile("nop"); }
+extern "C" void __mem_manage_handler  () { asm volatile("nop"); }
+extern "C" void __bus_fault_handler   () { asm volatile("nop"); }
+extern "C" void __usage_fault_handler () { asm volatile("nop"); }
+extern "C" void __svc_handler         () { asm volatile("nop"); }
+extern "C" void __debug_mon_handler   () { asm volatile("nop"); }
+extern "C" void __pend_sv_handler     () { asm volatile("nop"); }
+extern "C" void __sys_tick_handler    () { asm volatile("nop"); }
 
 namespace rvector
 {
@@ -25,9 +34,7 @@ namespace rvector
 }
 
 extern "C"
-{
-  const volatile std::array<rvector::isr_handler, rvector::num_interrupts> __reset_vector __attribute__((section(".reset_vector")));
-}
+const volatile std::array<rvector::isr_handler, rvector::num_interrupts> __reset_vector __attribute__((section(".reset_vector")));
 
 extern "C"
 {
@@ -117,5 +124,5 @@ extern "C"
     __unused_irq,           // 0x0144, can2 rx1 interrupt
     __unused_irq,           // 0x0148, can2 sce interrupt
     __unused_irq,           // 0x014C, usb otg fs global interrupt
-  }
+  };
 }

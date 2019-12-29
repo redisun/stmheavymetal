@@ -7,14 +7,14 @@
     {
       "name": "Cortex Debug",
       "cwd": "${workspaceRoot}",
-      "executable": "src/test_program.elf",
+      "executable": "bin/stmbare.elf",
       "request": "launch",
       "type": "cortex-debug",
       "servertype": "openocd",
-      "device": "stm32f4x",
+      "device": "stm32f1x",
       "configFiles": [
-        "interface/stlink-v2-1.cfg",
-        "target/stm32f4x.cfg"
+        "interface/jlink.cfg",
+        "target/stm32f1x.cfg"
       ]
     }
   ]

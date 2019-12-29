@@ -16,7 +16,7 @@ namespace rhandler
   void init_ram();
 }
 
-void rram::init_ram()
+void rhandler::init_ram()
 {
   typedef std::uint32_t mem_aligned_t;
 

@@ -11,6 +11,9 @@
 		"C_Cpp.clang_format_fallbackStyle": "Google",
 		"C_Cpp.clang_format_sortIncludes": true,
 		"vsintellicode.java.completionsEnabled": false,
-		"c-cpp-flylint.flexelint.enable": false
+		"c-cpp-flylint.flexelint.enable": false,
+		"files.associations": {
+			"array": "cpp"
+		}
 	}
 }

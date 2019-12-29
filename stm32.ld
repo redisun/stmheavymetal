@@ -1,5 +1,3 @@
-ENTRY(Reset_Handler)
-
 _estack = ORIGIN(RAM) + LENGTH(RAM);
 
 _rom_begin  = 0x08000000;
@@ -43,12 +41,7 @@ SECTIONS
     . = ALIGN(4);
     *(.rodata*)
     . = ALIGN(4);
-  } >ROM
-
-  .text :
-  {
-    . = ALIGN(0x10);
-  } >ROM = 0xAAAA;
+  } >FLASH
 
   . = 0x20000000;
   . = ALIGN(4);
@@ -63,7 +56,7 @@ SECTIONS
     . = ALIGN(4);
     KEEP (*(.data*))
     _data_end = .;
-  } >RAM AT >ROM
+  } >RAM AT >FLASH
 
   .bss :
   {
