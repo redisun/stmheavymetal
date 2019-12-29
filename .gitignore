@@ -1,0 +1,9 @@
+# binary executables
+*.bin
+*.elf
+
+# linked objects
+*.o
+
+# vscode files and folders
+
